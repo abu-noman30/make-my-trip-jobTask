@@ -23,7 +23,7 @@ module.exports = {
       'error',
       {
         printWidth: 80,
-        trailingComma: true,
+        trailingComma: 'es5',
         jsxSingleQuote: true,
         singleQuote: true,
         useTabs: false,
