@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "location": "Dhaka",
+    "airportName": "Hazrat Shahjalal International Airport"
+  },
+  {
+    "id": 2,
+    "location": "Bogura",
+    "airportName": "Bogra Airport"
+  },
+  {
+    "id": 3,
+    "location": "Sylhet",
+    "airportName": "Osmani International Airport"
+  },
+  {
+    "id": 4,
+    "location": "Chattogram",
+    "airportName": "Shah Amanat International Airport"
+  },
+  {
+    "id": 5,
+    "location": "Cox's Bazar",
+    "airportName": "Cox's Bazar Airport"
+  }
+]

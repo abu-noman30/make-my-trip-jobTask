@@ -19,11 +19,13 @@ module.exports = {
   plugins: ['react-refresh', 'prettier'],
   rules: {
     'react-refresh/only-export-components': 'warn',
+    'react/prop-types': 'off',
     'prettier/prettier': [
       'error',
       {
         printWidth: 80,
         trailingComma: 'es5',
+
         jsxSingleQuote: true,
         singleQuote: true,
         useTabs: false,

@@ -1,27 +1,112 @@
+import { useState } from 'react';
+import FareType from '../FareType/FareType';
+import FormLocationList from '../LocationList/FormLocationList';
+import ToLocationList from '../LocationList/ToLocationList';
+
 const Header = () => {
+  const [dropdownToggleFrom, setDropdownToggleForm] = useState(true);
+  const [dropdownToggleTo, setDropdownToggleTo] = useState(true);
   return (
     <>
       {/* Header Container */}
-      <div className='bg-blue-500 px-[18rem] py-[7.5rem]'>
-        <div className='bg-white w-[75rem] h-[13rem] rounded-xl '>
-          {/* Root Seclections */}
-          <div className='flex justify-between pt-[3.5rem] pb-[3rem] px-[2rem]'>
-            <div className='flex gap-5'>
-              <div className='flex '>
-                <input type='radio' name='trip' className='mr-2' />
-                <div>One Way</div>
+      <div className='bg-gradient-to-b from-[#061424] to-[#133F72] flex items-center justify-center py-[7.5rem]'>
+        <div className='flex flex-col items-center justify-center'>
+          <div className='bg-white w-[75rem] rounded-xl pb-[3rem] px-[2rem]'>
+            {/* Root Seclections */}
+            <div className='flex justify-between pt-[3.5rem] '>
+              <div className='flex gap-5'>
+                <div className='flex '>
+                  <input
+                    defaultChecked
+                    id='default-radio-1'
+                    type='radio'
+                    name='trip'
+                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mr-2'
+                  />
+                  <label
+                    htmlFor='default-radio-1'
+                    className='text-sm text-gray-900'
+                  >
+                    One Way
+                  </label>
+                </div>
+
+                <div className='flex'>
+                  <input
+                    id='default-radio-2'
+                    type='radio'
+                    name='trip'
+                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mr-2'
+                  />
+                  <label
+                    htmlFor='default-radio-2'
+                    className='text-sm text-gray-900'
+                  >
+                    Round Trip
+                  </label>
+                </div>
+                <div className='flex'>
+                  <input
+                    id='default-radio-3'
+                    type='radio'
+                    name='trip'
+                    className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 mr-2'
+                  />
+                  <label
+                    htmlFor='default-radio-3'
+                    className='text-sm text-gray-900'
+                  >
+                    Multi City
+                  </label>
+                </div>
+              </div>
+              <div className=''>Book International and Domestic Flights</div>
+            </div>
+
+            {/* location of from and to  including date and passenger starts  */}
+            <div className='border rounded-lg my-2 flex'>
+              {/* Location From Container */}
+              <div
+                className='border-r w-[17rem] h-[6.5rem] hover:bg-gray-100'
+                onClick={() => setDropdownToggleForm(!dropdownToggleFrom)}
+              >
+                <h2 className='p-2 text-sm'>Form</h2>
+                <FormLocationList dropdownToggleFrom={dropdownToggleFrom} />
               </div>
 
-              <div className='flex'>
-                <input type='radio' name='trip' className='mr-2' />
-                <div>Round Trip</div>
+              {/* Location To Container */}
+              <div
+                className='border-r w-[17rem] h-[6.5rem]  hover:bg-gray-100'
+                onClick={() => setDropdownToggleTo(!dropdownToggleTo)}
+              >
+                <h2 className='p-2 text-sm'>To</h2>
+                <ToLocationList dropdownToggleTo={dropdownToggleTo} />
               </div>
-              <div className='flex'>
-                <input type='radio' name='trip' className='mr-2' />
-                <div>Multi City</div>
-              </div>
+
+              {/* departure date Container */}
+              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100'></div>
+
+              {/* return date Container */}
+              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100'></div>
+
+              {/* number of travellers start */}
+              <div className='flex-auto  hover:bg-gray-100'></div>
             </div>
-            <div className=''>Book International and Domestic Flights</div>
+
+            {/* Fare Type Section */}
+            <div className=''>
+              <FareType />
+            </div>
+          </div>
+          {/* Search Button Container */}
+
+          <div className='-mt-[1.4rem]'>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full text-2xl px-[3.5rem] py-[0.3rem] text-center mr-2 mb-2 '
+            >
+              SEARCH
+            </button>
           </div>
         </div>
       </div>
