@@ -2,20 +2,27 @@ import { useState } from 'react';
 import FareType from '../FareType/FareType';
 import FormLocationList from '../LocationList/FormLocationList';
 import ToLocationList from '../LocationList/ToLocationList';
+import ScheduleCalender from '../ScheduleCalender/ScheduleCalender';
+import TravellersAndClass from '../TravellersAndClass/TravellersAndClass';
 
 const Header = () => {
   const [dropdownToggleFrom, setDropdownToggleForm] = useState(true);
   const [dropdownToggleTo, setDropdownToggleTo] = useState(true);
+  const [dropdownToggleTravellers, setDropdownToggleTravellers] =
+    useState(false);
+  const [dropdownToggleCalender, setDropdownToggleCalender] = useState(true);
+  console.log(dropdownToggleCalender);
+
   return (
     <>
       {/* Header Container */}
-      <div className='bg-gradient-to-b from-[#061424] to-[#133F72] flex items-center justify-center py-[7.5rem]'>
+      <div className='bg-gradient-to-b from-[#061424] to-[#133F72] flex items-center justify-center pt-[7.5rem] pb-[15rem]'>
         <div className='flex flex-col items-center justify-center'>
           <div className='bg-white w-[75rem] rounded-xl pb-[3rem] px-[2rem]'>
             {/* Root Seclections */}
             <div className='flex justify-between pt-[3.5rem] '>
               <div className='flex gap-5'>
-                <div className='flex '>
+                <div className='flex'>
                   <input
                     defaultChecked
                     id='default-radio-1'
@@ -67,30 +74,69 @@ const Header = () => {
             <div className='border rounded-lg my-2 flex'>
               {/* Location From Container */}
               <div
-                className='border-r w-[17rem] h-[6.5rem] hover:bg-gray-100'
+                className='cursor-pointer border-r w-[17rem] h-[6.5rem] hover:bg-gray-100'
                 onClick={() => setDropdownToggleForm(!dropdownToggleFrom)}
               >
-                <h2 className='p-2 text-sm'>Form</h2>
+                <h2 className='p-2 text-sm'>
+                  Form <span className='font-extrabold'>&#8964;</span>
+                </h2>
                 <FormLocationList dropdownToggleFrom={dropdownToggleFrom} />
               </div>
 
               {/* Location To Container */}
               <div
-                className='border-r w-[17rem] h-[6.5rem]  hover:bg-gray-100'
+                className='cursor-pointer border-r w-[17rem] h-[6.5rem]  hover:bg-gray-100'
                 onClick={() => setDropdownToggleTo(!dropdownToggleTo)}
               >
-                <h2 className='p-2 text-sm'>To</h2>
+                <h2 className='p-2 text-sm'>
+                  To <span className='font-extrabold'>&#8964;</span>
+                </h2>
                 <ToLocationList dropdownToggleTo={dropdownToggleTo} />
               </div>
 
               {/* departure date Container */}
-              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100'></div>
+              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100 '>
+                <div
+                  className=''
+                  onClick={() =>
+                    setDropdownToggleCalender(!dropdownToggleCalender)
+                  }
+                >
+                  <h2 className='p-2 text-sm'>
+                    Departure <span className='font-extrabold'>&#8964;</span>
+                  </h2>
+                </div>
+
+                <ScheduleCalender
+                  dropdownToggleCalender={dropdownToggleCalender}
+                />
+              </div>
 
               {/* return date Container */}
               <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100'></div>
 
               {/* number of travellers start */}
-              <div className='flex-auto  hover:bg-gray-100'></div>
+              <div className='hover:bg-gray-100 flex-auto'>
+                <div className=''>
+                  <div
+                    className='cursor-pointer'
+                    onClick={() =>
+                      setDropdownToggleTravellers(!dropdownToggleTravellers)
+                    }
+                  >
+                    <h2 className='p-2 text-sm'>
+                      Travellers & Class{' '}
+                      <span className='font-extrabold'>&#8964;</span>
+                    </h2>
+                  </div>
+                  <div className=''>
+                    <TravellersAndClass
+                      dropdownToggleTravellers={dropdownToggleTravellers}
+                      setDropdownToggleTravellers={setDropdownToggleTravellers}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Fare Type Section */}
