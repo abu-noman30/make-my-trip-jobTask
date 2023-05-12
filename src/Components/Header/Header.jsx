@@ -2,7 +2,8 @@ import { useState } from 'react';
 import FareType from '../FareType/FareType';
 import FormLocationList from '../LocationList/FormLocationList';
 import ToLocationList from '../LocationList/ToLocationList';
-import ScheduleCalender from '../ScheduleCalender/ScheduleCalender';
+import Departure from '../ScheduleCalender/Departure/Departure';
+import Return from '../ScheduleCalender/Return/Return';
 import TravellersAndClass from '../TravellersAndClass/TravellersAndClass';
 
 const Header = () => {
@@ -10,8 +11,15 @@ const Header = () => {
   const [dropdownToggleTo, setDropdownToggleTo] = useState(true);
   const [dropdownToggleTravellers, setDropdownToggleTravellers] =
     useState(false);
-  const [dropdownToggleCalender, setDropdownToggleCalender] = useState(true);
-  console.log(dropdownToggleCalender);
+  const [toggleDepartureCalender, setoggleDepartureCalender] = useState(false);
+
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: null,
+      key: 'selection',
+    },
+  ]);
 
   return (
     <>
@@ -99,7 +107,7 @@ const Header = () => {
                 <div
                   className=''
                   onClick={() =>
-                    setDropdownToggleCalender(!dropdownToggleCalender)
+                    setoggleDepartureCalender(!toggleDepartureCalender)
                   }
                 >
                   <h2 className='p-2 text-sm'>
@@ -107,13 +115,28 @@ const Header = () => {
                   </h2>
                 </div>
 
-                <ScheduleCalender
-                  dropdownToggleCalender={dropdownToggleCalender}
+                <Departure
+                  toggleDepartureCalender={toggleDepartureCalender}
+                  state={state}
+                  setState={setState}
                 />
               </div>
 
               {/* return date Container */}
-              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100'></div>
+              <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100 '>
+                <div
+                  className=''
+                  onClick={() =>
+                    setoggleDepartureCalender(!toggleDepartureCalender)
+                  }
+                >
+                  <h2 className='p-2 text-sm'>
+                    Return <span className='font-extrabold'>&#8964;</span>
+                  </h2>
+                </div>
+
+                <Return state={state} setState={setState} />
+              </div>
 
               {/* number of travellers start */}
               <div className='hover:bg-gray-100 flex-auto'>
