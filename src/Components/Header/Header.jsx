@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <>
       {/* Header Container */}
-      <div className='bg-gradient-to-b from-[#061424] to-[#133F72] flex items-center justify-center pt-[7.5rem] pb-[15rem]'>
+      <div className='bg-gradient-to-b h-screen from-[#061424] to-[#133F72] flex items-center justify-center pt-[7.5rem] pb-[15rem]'>
         <div className='flex flex-col items-center justify-center'>
           <div className='bg-white w-[75rem] rounded-xl pb-[3rem] px-[2rem]'>
             {/* Root Seclections */}
@@ -117,6 +117,7 @@ const Header = () => {
 
                 <Departure
                   toggleDepartureCalender={toggleDepartureCalender}
+                  setoggleDepartureCalender={setoggleDepartureCalender}
                   state={state}
                   setState={setState}
                 />
@@ -126,16 +127,16 @@ const Header = () => {
               <div className='border-r w-[10rem] h-[6.5rem]  hover:bg-gray-100 '>
                 <div
                   className=''
-                  onClick={() =>
-                    setoggleDepartureCalender(!toggleDepartureCalender)
-                  }
+                  onClick={() => {
+                    setoggleDepartureCalender(!toggleDepartureCalender);
+                  }}
                 >
                   <h2 className='p-2 text-sm'>
                     Return <span className='font-extrabold'>&#8964;</span>
                   </h2>
                 </div>
 
-                <Return state={state} setState={setState} />
+                <Return state={state} />
               </div>
 
               {/* number of travellers start */}

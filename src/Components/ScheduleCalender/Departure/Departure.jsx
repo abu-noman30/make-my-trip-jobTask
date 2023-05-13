@@ -3,8 +3,21 @@ import moment from 'moment';
 import { DateRange } from 'react-date-range';
 
 const Departure = (props) => {
-  const { toggleDepartureCalender, state, setState } = props;
+  const {
+    toggleDepartureCalender,
+    setoggleDepartureCalender,
+    state,
+    setState,
+  } = props;
 
+  const departureDate = moment(state[0].startDate).format('DD MMM YY');
+  const returnDate = moment(state[0].endDate).format('DD MMM YY');
+
+  const handlerOnFocusChange = () => {
+    if (returnDate >= departureDate) {
+      setoggleDepartureCalender(false);
+    }
+  };
   return (
     <>
       {/* Departure Calender Container */}
@@ -18,13 +31,25 @@ const Departure = (props) => {
           }`}
         >
           <div className=''>
+            {/* <div className='w-full border h-16 bg-gray-200'>
+              <p>
+                {departureDate
+                  ? departureDate
+                  : moment(new Date()).format('DD MMM YY')}
+              </p>
+              <p>{returnDate === null ? 'Select Return Date' : returnDate}</p>
+            </div> */}
             <DateRange
               onChange={(item) => {
                 setState([item.selection]);
               }}
-              moveRangeOnFirstSelection={false}
+              onRangeFocusChange={() => {
+                handlerOnFocusChange();
+              }}
+              showDateDisplay={true}
+              // moveRangeOnFirstSelection={false}
               preventSnapRefocus={false}
-              showSelectionPreview={true}
+              // showSelectionPreview={true}
               ranges={state}
               months={2}
               minDate={addDays(new Date(), 0)}
